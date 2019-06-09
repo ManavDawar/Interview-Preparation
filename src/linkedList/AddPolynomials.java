@@ -27,12 +27,6 @@ public class AddPolynomials {
 	public static void addPolynomial(Node poly1, Node poly2) {
 		// write your code here
 		// Print the polynomial formed by adding both LL in the function itself.
-		Node one = poly1;
-		Node two = poly2;
-
-		Node onenext = poly1.next;
-		Node twonext = poly2.next;
-
 		while (poly1 != null && poly2 != null) {
 
 			if (poly1.pow > poly2.pow) {
