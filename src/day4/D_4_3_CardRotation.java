@@ -8,24 +8,25 @@ public class D_4_3_CardRotation {
 	
 	     public static void cardRotation(int N) {
 	         // Write your code here
-	         LinkedList<Integer> queue=new LinkedList<>();
-	         for(int i=0;i<N;i++){
-	             queue.addLast(i);
-	         }
-	         
-	         int [] res= new int[N];
-	         int i=1;
-	         while(queue.size()>0&&i<=N){
-	             
-	             for(int j =0;j<i;j++){
-	                 queue.addLast(queue.removeFirst());
-	             }
-	             res[queue.removeFirst()]=i;
-	             
-	             i++;
-	         }
-	         
-	        for(int j=0;j<N;j++)System.out.print(res[j]+" ");
+	        LinkedList<Integer> queue = new LinkedList<>();
+	        for(int i=0;i<N;i++) {
+	        	queue.addLast(i);
+	        }
+	        int i=1;
+	        int[] res = new int[N];
+	        while(!queue.isEmpty()&&i<=N) {
+	        	
+	        	for(int j=0;j<i;j++) {
+	        		queue.addLast(queue.removeFirst());
+	        	}
+	        	
+	        	res[queue.removeFirst()]=i;
+	        	i++;
+	        }
+	        for(i=0;i<N;i++) {
+	        	System.out.println(res[i]);
+	        }
+	        
 	 
 	     }
 	 

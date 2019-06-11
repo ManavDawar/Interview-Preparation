@@ -7,44 +7,28 @@ public class D_4_1_AsteroidCollision {
 
 	public static int[] asteroidCollision(int[] asteroids) {
 		// Write your code
-		int len = asteroids.length;
-		Stack<Integer> stack = new Stack<>();
-		for (int i = 0; i < len; i++) {
-			if (asteroids[i] < 0) {
-
-				if (stack.isEmpty()) {
-					stack.push(asteroids[i]);
-				} else {
-					if (stack.peek() < 0) {
-						stack.push(asteroids[i]);
-					} else {
-						while (!stack.isEmpty()) {
-
-							int goRight = stack.pop();
-							if (goRight < Math.abs(asteroids[i])) {
-
-							} else if (goRight == Math.abs(asteroids[i])) {
-								i++;
-								break;
-							} else {
-								stack.push(goRight);
-								i++;
-								break;
-							}
-
-						}
-						i--;
+		
+		Stack<Integer> st = new Stack<>();
+		
+		for(int i=0;i<asteroids.length;i++) {
+			int ast=asteroids[i];
+			
+			condition:{
+				while(!st.isEmpty()&&ast<0&&st.peek()>0) {
+					if(st.peek()<Math.abs(ast)) {
+						st.pop();
+						continue;
+					}else if(st.peek()==Math.abs(ast)) {
+						st.pop();
 					}
-
+					break condition;
 				}
-
-			} else {
-				stack.push(asteroids[i]);
+				st.push(ast);
 			}
 		}
-		int[] res = new int[stack.size()];
-		for (int i = res.length - 1; i >= 0; i--) {
-			res[i] = stack.pop();
+		int[] res= new int[st.size()];
+		for(int i=res.length-1;i>=0;i--) {
+			res[i]=st.pop();
 		}
 		return res;
 	}

@@ -11,34 +11,27 @@ public class D_4_5_SnQUniqueChar {
 		int arr[] = new int[26];
 		Queue<Character> q = new LinkedList<>();
 
-		for (int i = 0; i < str.length; i++) {
-
+		for(int i=0;i<str.length;i++) {
 			char ch = str[i];
-
-			arr[ch - 'a']++;
-
+			
+			arr[ch-'a']++;
 			q.add(ch);
-
-			while (!q.isEmpty()) {
-
-				if (arr[q.peek() - 'a'] > 1) {
+			
+			while(!q.isEmpty()) {
+				
+				if(arr[q.peek()-'a']>1) {
 					q.remove();
-				}
-
-				else {
-					System.out.print(q.peek() + " ");
-					break;
-				}
-
+				}else {
+                    System.out.print(q.peek()+" ");
+                    break;
+                }
 			}
-
-			if (q.isEmpty()) {
-				System.out.print(-1 + " ");
+			
+			if(q.isEmpty()) {
+				System.out.print(-1+" ");
 			}
+			
 		}
-
-		System.out.println();
-
 	}
 
 	// Dont make changes here
