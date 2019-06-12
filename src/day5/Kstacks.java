@@ -3,17 +3,17 @@ package day5;
 public class Kstacks {
 
 	int[] da;
-	int[] csheads;
 	int[] pa;
-	int cfhead = 0;
+	int[] sha;
+	int free = 0;
 	int cap;
 
 	public Kstacks(int cap, int k) {
 		this.cap = cap;
 		da = new int[cap];
-		csheads = new int[k + 1];
+		sha = new int[k + 1];
 		pa = new int[cap];
-		cfhead = 0;
+		free = 0;
 
 		for (int i = 0; i < cap - 1; i++) {
 			pa[i] = i + 1;
@@ -21,7 +21,7 @@ public class Kstacks {
 		pa[cap - 1] = -1;
 
 		for (int i = 0; i <= k; i++) {
-			csheads[i] = -1;
+			sha[i] = -1;
 		}
 	}
 
@@ -31,17 +31,26 @@ public class Kstacks {
 			return;
 		} else {
 
-			int nfhead = pa[cfhead];
-			int nstackhead = cfhead;
-
-//			removeFirst on free
-			cfhead = nfhead;
-
-//			addFirst on stack
-			pa[nstackhead] = csheads[sn];
-			csheads[sn] = nstackhead;
-
-			da[nstackhead] = val;
+			int temp=free;
+//			free moves to next position	
+			free=pa[free];
+			
+			pa[temp]=sha[sn];
+			sha[sn]=temp;
+			da[temp]=val;
+			
+			
+//			int nfhead = pa[cfhead];
+//			int nstackhead = cfhead;
+//
+////			removeFirst on free
+//			cfhead = nfhead;
+//
+////			addFirst on stack
+//			pa[nstackhead] = csheads[sn];
+//			csheads[sn] = nstackhead;
+//
+//			da[nstackhead] = val;
 
 		}
 	}
@@ -51,16 +60,22 @@ public class Kstacks {
 			System.out.println("Underflow");
 			return;
 		} else {
-//			variables
-			int nstackhead = pa[csheads[sn]];
-			int nfhead = csheads[sn];
-
-//			update
-			csheads[sn] = nstackhead;
-			pa[nfhead] = cfhead;
-			cfhead = nfhead;
-
-			da[nfhead] = 0;
+//re
+			int temp=sha[sn];
+			sha[sn]=pa[temp];
+			pa[temp]=free;
+			free=temp;
+			da[temp]=0;
+			////			variables
+//			int nstackhead = pa[csheads[sn]];
+//			int nfhead = csheads[sn];
+//
+////			update
+//			csheads[sn] = nstackhead;
+//			pa[nfhead] = cfhead;
+//			cfhead = nfhead;
+//
+//			da[nfhead] = 0;
 		}
 	}
 
@@ -69,16 +84,16 @@ public class Kstacks {
 			System.out.println("underflow");
 			return -1;
 		} else {
-			return da[csheads[sn]];
+			return da[sha[sn]];
 		}
 	}
 
 	boolean isFull() {
-		return cfhead == -1;
+		return free == -1;
 	}
 
 	boolean isEmpty(int sn) {
-		return csheads[sn] == -1;
+		return sha[sn] == -1;
 	}
 
 	public static void main(String[] args) {
@@ -96,7 +111,6 @@ public class Kstacks {
 		ks.push(3, 80);
 		ks.push(4, 90);
 		ks.push(2, 100);
-		ks.push(1, 110);
 
 		for (int i = 1; i <= 4; i++) {
 			System.out.print("s"+i+"->");
