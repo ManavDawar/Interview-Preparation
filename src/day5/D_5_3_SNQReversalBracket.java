@@ -2,10 +2,12 @@ package day5;
 
 import java.util.Stack;
 
-public class ReversalBracket {
+public class D_5_3_SNQReversalBracket {
 
 	public static int reversal(String s) {
 		int count=0;
+		if(s.length()%2!=0)
+	 	 	 return -1;
 		Stack<Character> st = new Stack<>();
 		for (int i = 0; i < s.length(); i++) {
 			char ch = s.charAt(i);
