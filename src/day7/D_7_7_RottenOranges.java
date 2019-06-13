@@ -3,7 +3,7 @@ package day7;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class rottenorange {
+public class D_7_7_RottenOranges {
 
 	public static class Helper {
 		int row;
