@@ -6,8 +6,7 @@ public class D_7_12_NGEOther {
 	 	 // Write your code here	 
 	 	    HashMap<Integer,Integer> map = new HashMap<>();
 	 	    Stack<Integer> st = new Stack<>();
-	 	    for(int i =0;i<nums2.length;i++){
-	 	        
+	 	    for(int i =0;i<nums2.length;i++){	 	        
 	 	        while(!st.isEmpty()&&st.peek()<nums2[i]){
 	 	            map.put(st.pop(),nums2[i]);
 	 	        }
