@@ -8,7 +8,7 @@ public class D_8_3_SubstringEqual0_1_2 {
 		// Write your code here
 		  HashMap<String, Integer> map = new HashMap<>();
 		  		
-	         int ans1 = 0;
+	         int ans = 0;
 	         int count0 = 0, count1 = 0, count2 = 0;
 	         
 	         map.put("0*0", 1);
@@ -30,14 +30,14 @@ public class D_8_3_SubstringEqual0_1_2 {
 	             
 	             String temp = (count0 - count1) + "*" + (count0 - count2);   
 	             if (map.containsKey(temp)) {	 	 	 	 	 	 	 	 
-	                 ans1 += map.get(temp);
+	                 ans += map.get(temp);
 	                 map.put(temp, map.get(temp) + 1);
 	             } else {
 	                 map.put(temp, 1);
 	             }
 	         }
 	         
-	         System.out.println(ans1);
+	         System.out.println(ans);
 	}
 
 	// Dont make changes here
