@@ -6,6 +6,7 @@ public class D_8_3_SubstringEqual0_1_2 {
 
 	public static void equal_012(String line) {
 		// Write your code here
+			int ans1=0;
 		  HashMap<String, Integer> map = new HashMap<>();
 	         int ans = 0;
 	         int count0 = 0, count1 = 0, count2 = 0;
