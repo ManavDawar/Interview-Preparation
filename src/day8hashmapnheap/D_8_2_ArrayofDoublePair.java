@@ -1,6 +1,4 @@
 package day8hashmapnheap;
-
-<<<<<<< HEAD
 import java.util.*;
 
 public class D_8_2_ArrayofDoublePair {
