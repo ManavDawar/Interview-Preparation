@@ -5,6 +5,56 @@ import java.util.Scanner;
 
 public class D_10_3_MaxPointsOnLine {
 
+	
+//	------------------------------------------------------------------------------------------------------
+//    public static class Line {
+//		int dx;
+//		int dy;
+//
+//		public Line(int dy, int dx) {
+//			this.dy = dy;
+//			this.dx = dx;
+//		}
+//	}
+//
+//	public static int maxPoints(Point[] points) {
+//		// Write your code here
+//		HashMap<String, Integer> map = new HashMap<>();
+//		int result = 0;
+//
+//		for (int i = 0; i < points.length; i++) {
+//			int max = 0;
+//			map.clear();
+//		
+//				int x1 = points[i].x;
+//				int y1 = points[i].y;
+//				
+//			for (int j = i + 1; j < points.length; j++) {
+//		
+//				int x2 = points[j].x;
+//				int y2 = points[j].y;
+//
+//				int dy = y2 - y1;
+//				int dx = x2 - x1;
+//
+//				int gcd = gcd(dy, dx);
+//				if (gcd != 0) {
+//					dx /= gcd;
+//					dy /= gcd;
+//				}
+//        
+//				// Line l = new Line(dy, dx);
+//				String l =dy+" "+dx;
+//				map.put(l, map.getOrDefault(l, 1) + 1);
+//				max = Math.max(max, map.get(l));
+//			}
+//			result=Math.max(result, max);
+//		}
+//		
+//		return result;
+//
+//	}
+//-------------------------------------------------------------------------------------------	
 	public static int maxPoints(Point[] points) {
 		// Write your code here
 		if (points == null) {
