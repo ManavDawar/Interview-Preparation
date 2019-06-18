@@ -40,6 +40,7 @@ public class D_8_5_FindDuplicate {
 	// -----------------------------------------------------
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
+<<<<<<< HEAD
 
 		String res="abc(f(DSAD(DS(D(D";
 		String[] name_cont = res.split("(");
@@ -63,6 +64,23 @@ public class D_8_5_FindDuplicate {
 //		for (ArrayList<String> val : ans) {
 //			System.out.println(val);
 //		}
+=======
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int n = Integer.parseInt(br.readLine());
+		String[] paths = new String[n];
+
+		for (int i = 0; i < n; i++) {
+			paths[i] = br.readLine();
+		}
+		ArrayList<ArrayList<String>> ans = findDuplicate(paths);
+		for (ArrayList<String> val : ans) {
+			Collections.sort(val);
+		}
+
+		for (ArrayList<String> val : ans) {
+			System.out.println(val);
+		}
+>>>>>>> 38cd596280e1df86a48c4d4ebe37724363a439d6
 	}
 
 }
