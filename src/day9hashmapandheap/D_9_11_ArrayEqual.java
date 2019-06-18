@@ -6,27 +6,24 @@ public class D_9_11_ArrayEqual {
 
 	public static boolean isTwoArrayEqual(long[] num1, long[] num2) {
 		// write your code here
-		HashMap<Long, Integer> map = new HashMap<>();
-		for (long val : num1) {
-			map.put(val, map.getOrDefault(val, 0) + 1);
-		}
+		HashMap<Long, Integer> hmap = new HashMap<>();
+	 	 for (long val : num1) {
+	 	 	 hmap.put(val, hmap.getOrDefault(val, 0) + 1);
+	 	 }
 
-		for (long val : num2) {
-			if (map.containsKey(val)) {
-				map.put(val, map.get(val) - 1);
-				if(map.get(val)==0) {
-					map.remove(val);
-				}
-			}else {
-				return false;
-			}
-		}
-		if (map.size() == 0) {
-			return true;
-		} else {
-			return false;
-		}
+	 	 for (Long val : num2) {
+	 	 	 if (hmap.containsKey(val) == false) {
+	 	 	 	 return false;
+	 	 	 } else {
+	 	 	 	 if (hmap.get(val) == 1) {
+	 	 	 	 	 hmap.remove(val);
+	 	 	 	 } else {
+	 	 	 	 	 hmap.put(val, hmap.get(val) - 1);
+	 	 	 	 }
+	 	 	 }
+	 	 }
 
+	 	 return true;
 	}
 
 	// Don't make changes here
