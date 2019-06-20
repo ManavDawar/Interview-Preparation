@@ -4,53 +4,73 @@ import java.util.*;
 
 public class D_8_4_Anagram {
 
+	// -----------------------------------------------------
+	// This is a functional problem. Only this function has to be written.
+	// This function takes as input the head of the linked list.
+	// It should return the head of the modified list.
+
 	public static ArrayList<Integer> findAnagrams(String s, String p) {
-		ArrayList<Integer> arr = new ArrayList<>();
-		int[] charhash = new int[26];
-		for (char c : p.toCharArray()) {
-			charhash[c - 'a']++;
+
+		// write your code here]
+		HashMap<Character, Integer> map = new HashMap<>();
+		for (int i = 0; i < p.length(); i++) {
+			char c = p.charAt(i);
+			if (map.containsKey(c))
+				map.put(c, map.get(c) + 1);
+			else
+				map.put(c, 1);
 		}
 
-		if (s.length() < p.length()) {
-			return arr;
-		}
+		int count = 0, size = p.length(), start = 0, end = 0;
+		ArrayList<Integer> ans = new ArrayList<>();
+		HashMap<Character, Integer> map2 = new HashMap<>();
 
-		int[] windowcharhash = new int[26];
-
-		int start = 0 - p.length();
-		int end = -1;
-		int matchedcount = 0;
-
-		while (true) {
-			if (matchedcount == p.length()) {
-				arr.add(start);
-			}
+		for (int i = 0; i < size; i++) {
+			char c = s.charAt(i);
+			if (map2.containsKey(c))
+				map2.put(c, map2.get(c) + 1);
+			else
+				map2.put(c, 1);
+			if (map.containsKey(c) && map2.get(c) <= map.get(c))
+				count++;
 			end++;
-			if (end >= s.length()) {
-				break;
-			}
-
-			if (end < 0) {
-
-			} else {
-				if (windowcharhash[s.charAt(end) - 'a'] < charhash[s.charAt(end) - 'a']) {
-					matchedcount++;
-				}
-				windowcharhash[s.charAt(end) - 'a']++;
-			}
-			if (start < 0) {
-
-			} else {
-				if (windowcharhash[s.charAt(start) - 'a'] == charhash[s.charAt(start) - 'a']) {
-					matchedcount--;
-				}
-				windowcharhash[s.charAt(start) - 'a']--;
-			}
-			start++;
 		}
-		return arr;
+		if (count == size)
+			ans.add(start);
+		end--;
+
+		while (end != s.length() - 1) {
+			char c = s.charAt(start);
+			if (map.containsKey(c) && map2.get(c) <= map.get(c))
+				count--;
+
+			if (map2.containsKey(c))
+				map2.put(c, map2.get(c) - 1);
+			else
+				map2.remove(c);
+
+			start++;
+
+			end++;
+
+			char c2 = s.charAt(end);
+			if (map2.containsKey(c2))
+				map2.put(c2, map2.get(c2) + 1);
+			else
+				map2.put(c2, 1);
+
+			if (map.containsKey(c2) && map2.get(c2) <= map.get(c2))
+				count++;
+
+			if (count == size)
+				ans.add(start);
+
+		}
+		return ans;
 
 	}
+
+	// -----------------------------------------------------
 
 	public static void main(String[] args) {
 		Scanner scn = new Scanner(System.in);
