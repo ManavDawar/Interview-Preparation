@@ -26,7 +26,7 @@ public class GroupedAnagram {
 			
 		}
 		
-		return new ArrayList<>(map.values());
+		return new ArrayList(map.values());
 //		-----------------------------Method2----------------------
 //		HashMap<HashMap<Character, Integer>, ArrayList<String>> grouped = new HashMap<>();
 //
