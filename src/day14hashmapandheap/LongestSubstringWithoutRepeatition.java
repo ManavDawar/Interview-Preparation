@@ -7,20 +7,20 @@ public class LongestSubstringWithoutRepeatition {
 
 	public static int lengthOfLongestSubstring(String s) {
 		// Write your code here
-		 HashSet<Character> set = new HashSet<>();
-			int minlen=Integer.MIN_VALUE;
-			int left=0;
-			for(int i=0;i<s.length();i++) {
-				char c =s.charAt(i);
-				while(set.contains(c)) {
-					set.remove(s.charAt(left));
-					left++;
-				}
-				set.add(c);
-				minlen=Math.max(minlen, (i-left)+1);
+		HashSet<Character> set = new HashSet<>();
+		int minlen = Integer.MIN_VALUE;
+		int left = 0;
+		for (int i = 0; i < s.length(); i++) {
+			char c = s.charAt(i);
+			while (set.contains(c)) {
+				set.remove(s.charAt(left));
+				left++;
 			}
-			
-			return minlen;
+			set.add(c);
+			minlen = Math.max(minlen, (i - left) + 1);
+		}
+
+		return minlen;
 
 	}
 
